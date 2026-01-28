@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awaiting Your Follow Back 💫</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Darker+Grotesque:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #faf8f5;
+            --charcoal: #2b2b2b;
+            --rose: #d4a5a5;
+            --gold: #c9a961;
+            --shadow: rgba(43, 43, 43, 0.06);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Darker Grotesque', sans-serif;
+            background: linear-gradient(135deg, var(--cream) 0%, #f5f1eb 100%);
+            color: var(--charcoal);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .message-section {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 80px 32px 60px;
+            text-align: center;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .heart-icon {
+            font-size: 48px;
+            margin-bottom: 24px;
+            display: inline-block;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(32px, 5vw, 54px);
+            font-weight: 300;
+            line-height: 1.3;
+            margin-bottom: 24px;
+            color: var(--charcoal);
+            letter-spacing: -0.02em;
+        }
+
+        .message {
+            font-size: clamp(16px, 2.5vw, 20px);
+            line-height: 1.7;
+            color: #5a5a5a;
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto 16px;
+        }
+
+        .signature {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            color: var(--rose);
+            margin-top: 32px;
+            font-style: italic;
+        }
+
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 48px auto;
+            opacity: 0.5;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 0 40px 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .user-tile {
+            background: white;
+            border-radius: 16px;
+            padding: 28px 20px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--charcoal);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 2px 12px var(--shadow);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .user-tile::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--rose) 0%, var(--gold) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+        }
+
+        .user-tile:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 32px rgba(212, 165, 165, 0.25);
+        }
+
+        .user-tile:hover::before {
+            opacity: 0.08;
+        }
+
+        .user-tile:active {
+            transform: translateY(-4px) scale(0.98);
+        }
+
+        .profile-pic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 16px;
+            background: linear-gradient(135deg, #f0e6e6 0%, #e8dcd6 100%);
+            border: 3px solid white;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: var(--rose);
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .user-tile:hover .profile-pic {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .username {
+            font-size: 15px;
+            font-weight: 400;
+            word-break: break-word;
+            line-height: 1.4;
+            position: relative;
+            z-index: 1;
+            color: var(--charcoal);
+            transition: color 0.3s ease;
+        }
+
+        .user-tile:hover .username {
+            color: var(--rose);
+        }
+
+        .instagram-icon {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            width: 20px;
+            height: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+        }
+
+        .user-tile:hover .instagram-icon {
+            opacity: 0.4;
+        }
+
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                gap: 16px;
+                padding: 0 20px 60px;
+            }
+
+            .message-section {
+                padding: 60px 24px 40px;
+            }
+
+            .user-tile {
+                padding: 20px 12px;
+            }
+
+            .profile-pic {
+                width: 64px;
+                height: 64px;
+                font-size: 24px;
+            }
+
+            .username {
+                font-size: 13px;
+            }
+        }
+
+        /* Staggered animation for tiles */
+        .user-tile {
+            animation: slideUp 0.6s ease-out both;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Apply staggered delay via JS */
+    </style>
+</head>
+<body>
+    <div class="message-section">
+        <div class="heart-icon">💫</div>
+        <h1>Hey Kind-Hearted Souls</h1>
+        <p class="message">
+            I found you all in a beautiful community built on kindness and mutual support. 
+            You were offering follow-backs when someone follows you, and I believed in that spirit.
+        </p>
+        <p class="message">
+            I thought you might be busy managing your pages, so I'm reaching out with patience and hope. 
+            Would you kindly follow me back? I'd really appreciate it, and I don't want to unfollow wonderful people like you.
+        </p>
+        <p class="signature">
+            Your tile will disappear once you follow back ✨
+        </p>
+        <div class="divider"></div>
+    </div>
+
+    <div class="gallery" id="gallery"></div>
+
+    <script>
+        const users = [
+            "3wishesformeandmyfamily", "4700gfx", "____sujit.sen", "__kaizen__888", "_conniescorner_", "_croshya_", "_curated_life_", "_el_emporio", "_fabric_vault_ng", "_heart.in.bloom_", "_natalieshouse", "_rise_aura_", "_sashaverse7_", "_starrycreations_", "_thecoleexperience", "_xandko_", "_younique_25", "a_1_thakur307", "acuitycounselingok", "adheredaf", "adornaments_", "aera_spice", "aifashionaccessories", "ailsfriendshipbracelets", "akbabyboutique_", "al_riyanstore_official", "alight_of_incense", "aliorapaperie.ph", "alistrippytreats", "all_.things_.art", "allure.newswire", "alorawealth", "alybearco", "alzareandco", "amariassist", "amdavadplug", "amoraluxe__", "amour.memoirs_", "amuse.international", "anita_pastovic_maric", "anjeshas_shelf", "aratrika_cust", "aria.lately", "art_of_daya", "artbytucek", "artfully.awkward", "artilyfabulous", "artist_passion55", "artmuse_17", "as.unsaid", "asecretadmirer_com", "asgroup_asg", "ashasfashion2025", "auntmikeysboutique", "aura_silver_jewellery", "auramediaco01", "ayaat_creations", "ayobracelets", "azurabyareeba", "babubridalcorner", "babybearsgoods", "baked_by_bestie", "barcode.quotes.project", "bareroots.soapco", "beadedbakes785", "beadedbysoo", "beautybymarsela", "beautysalon_mandy_danielse", "beeandlilacco", "behindherveil2025", "bellaybrilla503", "bennies.benedictions", "bhavuksharmaofficial", "bienzabeads_collection", "billubodmosh007", "bits_bobbins26", "blessed_boho_creations", "blingi_fy", "blissful_archives", "bloom.and.co.candles", "bloom.nd.bite", "bloombiteslv", "bloomflowerpk", "bloomingseakitchen", "blossi90642", "blossomingcraftsbyrie", "blue_does_art00", "blurvisionx", "boopandbeandesigns", "boostwithai_", "bouquet.by.ns", "bracelet_bling123", "brandedfits.pk", "branfordtailor257", "bronzedmuse_", "buildyourselfwithabhishek", "bundleofjoy_mcr", "buywthus", "by.fuwafuwa", "bysiamese6ix", "byxmaan", "cactusblossomtreatcompany", "cake.florist_", "captionedkitchen", "casecollection_ca", "casedincolour", "caseshop_vibe", "casper_capri", "castleandbowsteeshirtco", "catspinkoven", "celeste.by.baa", "chantyloops", "charliehills", "charmedby.nat", "charmedbyjackss", "chocolatedipped", "chooseholisticliving", "claycreations.studio", "closet_chaos11", "cloud.9.kits", "coffeeandchaos05", "colorfuldesignsbyz", "cookiecrumbscompany", "copperrosecreation", "coveandpine.ca", "cozydekor_", "creations.by.luna", "cro._.chet_lulu", "cro_het1", "cs_sanctuarywellnessspa", "cuartstudios", "curatedbypreeti__", "cute_pretties.co", "dear_denim_", "decor.bymadiha", "desgnetsy_sunshine", "desi_krafts_by_swr", "destinationlamination", "detail_raffine", "detailsbyseema", "dharshu_resin_art", "dhi.nails_avenue", "dig.pea.2025", "digitalboxoflovebya", "digiworkonline", "dilipkumar________765", "diykasityoniksit", "domiajewellery", "domtie.jewelry", "doterrah.essentials", "dreamystitchstories", "dresstothehilt", "dyzird", "ecohealthglobal_", "eichmann.home.co", "elayhaandco", "elimay_candles", "ellacrafts.online", "ellis.reed14", "eloanoatelier", "elpidamar.jewellery", "embro.ideryby_kaur", "erys.na", "eternal_box_", "euno.offical", "eve_onlinestore", "everflowcafe", "everydaywithjayne", "everythingus25", "evolviawellness", "ezmira.finds", "faejude.curiosities", "fairyfrost_cosmetics_", "faithinfragments", "felis_yarniverse", "fitsmyfancyllc", "florabloomboutique._", "floral_perfections", "fly_.hair", "focuspraytrust", "forever_florals7", "foreverflowers2k26", "frolic_churn", "furryland.studio", "get.scrunchd.shop", "getsplashr", "gifts_by_hayat", "girlsgirldesigned", "giveuscaption", "glam.orchid.js", "glamglowluxe", "glamourosa.ig", "glitterette.studio", "glowby_ade", "glownuraofficial", "godbewithyou.co", "grafina.design", "grihacouture", "gulika0601", "hair.bysammi", "hairrepairdiary", "handmadeforthebeauties", "hat.trix.hats", "hazelydipped", "heartfelt_dyes", "hellomini_style", "heraglowmua", "herbalhexco", "heressence_her", "heretify.ht", "hmcreations_123", "hodgesdirtysodahouse", "holidaystocookies", "holyhearts.co", "honeybearsleepco", "house.of.aurene", "houseofriwayat.official", "hr.treats", "hulyaaccessoriesco", "hustleand_heels", "iamhappygorgeousada", "idkwhatamdoen", "igva_ann", "ikigai.ally", "imannnnnnnn.ss", "increntals", "inferno_retro_boutique_", "ink_unityapparel", "isuh_aniiiii", "jasmi.dxb", "jaysflowerbouquets_", "jeannemarie.studio", "jordandelilahsweets", "joyfulcreationsbyk", "junkedbycourtney", "jxv.studio__", "kalasuratibysargun", "kandksweetsandgifts", "kangurovintage", "kareena_luxe_chic", "kaseyskreations88", "keefeholistic", "keiras_kreations2024", "kern_kreations", "kes__sang__", "khairexanna00", "khtwt4586", "kookieventure", "krosha_kriya", "lagushi.handcraft", "lazydaisysco", "letmomtalkorg", "lettersinthesilence", "librarythelehenga", "lilysvinyltouch", "lina.aura1", "littlekeepsie", "littlepixelwitch", "loopnzap", "luminiares_of_sofiya", "made4gameday", "madewithlove_bysabrina", "maggi_ke_jail_star302", "maginovastudio", "mahakcreatess", "maileiluxurycosmetics", "maisondusacs_", "makeyoupopjewelry", "margaret.j_", "marijcollection", "maryn_chibihime", "maya.nails_studio", "mcclung_novelettes", "me.myself.designco", "mgbluxecollection", "milliebelle__", "milo.the.cat.official", "mine_crochet_diary", "ministryofshugar", "miss_cali_vibez", "mmkdigitals", "moonlightcandlecraft.co", "mountainchickenmarket", "mylemonademoments", "mystic.candles04", "mysticbloomluxury", "mysweetstationery", "nailchemybyaj", "name_echo_", "needliathreads", "nisaa.couture", "nishoo.pk", "northbridge_media", "notivaaa", "nourishandcompany", "nuitt.ae", "official.cosy.club", "official.milesofmotherhood", "optimystic.growth", "opulent.scentsxo", "orelle_official", "packovia", "paradisecloset.ng", "pawpularpaperco", "peachy.patterns", "piggydepot", "piratethread", "pixeljournal03", "poshaaq_by_ahsan_ellahi", "pressed_by_jades", "pretty.in.k", "printmate_prints", "pro__horsewills", "pure_glow_hair_oil", "purebloom2025", "pyarebachay", "pydanofficial", "radhe_radhefootwear", "raiyastreasure", "raredigitcrafts", "rashya_luxe", "ravinedesign_", "rawanduniq", "rebeccasrhinestones", "recuerdosmobilebar", "redsresinkunst", "reef_branding", "remind.labstudio", "resin_art469", "resminafrus", "restwithchaya", "retro_bl00m", "rewindportraitstt", "rhythm_archetype", "rinislashes.co", "river.and.rootsco", "rlwhitesconcepts", "rnr_hatco", "rohan_.creative", "ruheen_by_rida_mehmood", "rustnrhinestones.co", "samreen_official22", "sanixels.co", "savsbannersandcustoms", "scentfanatic202423", "seauxsweetprints", "sellersparkdaily", "sg_graphics_animation_studio", "shalox_official___", "sharky.beads", "shearlovelipcare", "sheshinery", "shopcreation2026", "shopelayah", "shophillarymade", "shopvalleyflowers", "skinbylishax", "skinsoftwax", "smithandco.3dprinting", "snufflersadoption", "snuggleties_london", "somaelaria", "sophia_crochets__", "sparkle_and_squad", "sparklessupplies", "starlightshalwars", "starstitchs", "storyline_health", "streeraga", "strivebeam", "studio.museforge", "style_mart.official", "suits_youu_", "sukruthi.bindery", "sweet_by_hand", "sweetharts.co", "syamapriyasarees", "tcrgems", "temufinds1820", "tendora_online_", "the.aura.farm", "the.lunch.break.investor", "the.visual__journal", "the_craft_mould", "the_kiyon_store", "the_wonderland_way", "thebannercat", "thechazzyedit", "thecraftgarden.pk", "thecraftingmamas_", "thecruxofquincey", "thedesiattire.in", "theemberwithinme", "theheavenbites", "thekitchennookofficial", "thekkandco", "theknottedaxolotl", "thekuddlybox", "themanifestationstore", "theofficialcookiemd", "theromodesign.co", "thescrubclubrn", "theskinsapothecary", "thoughtfullymade.co", "threadheadtt", "tidyandtots", "tie_and_style10", "tiffanymadisondesigns", "timeless.by.amy", "tinythinkerslk", "tohfa.byheart", "tooth_toxco", "totallyteabombs", "totus.tuus.studio", "tranquil_by_t", "triomade.co", "trishajohn.beauty", "trylenorah", "turbulentmind", "twirlwithzi", "ug_boutique_official", "unique__accessories4u", "vastravillaofficials", "vatika_stitch_and_style", "velourestudios", "veltoclutches", "velvet.crafts__", "velvetlensmarketing", "wanderlusttravelworld_official", "wanderraprints", "waranya.gng", "we.are.webmart.se", "wearyourflogo", "wellnessalchemy.journey", "wellnessbyhassha", "wesacredco", "whimsystudio._", "whiskhuntsville", "whittlewood_workshop", "wildberries_oficial", "wildradiancee", "wildthreadco_", "willowswagsandwears", "within_art_studio", "wondergirlcrochet", "wrapped_whimsy_hampers", "yarnelle.official1", "yasoapstore", "yazstudioss", "ymc_artss", "zaras_world_of_dreams", "zarique._", "zau.fashion", "zmydesign_"
+        ];
+
+        const gallery = document.getElementById('gallery');
+        
+        users.forEach((username, index) => {
+            const tile = document.createElement('a');
+            tile.className = 'user-tile';
+            tile.href = `https://instagram.com/${username}`;
+            tile.target = '_blank';
+            tile.rel = 'noopener noreferrer';
+            tile.style.animationDelay = `${(index % 50) * 0.02}s`;
+            
+            const initial = username.charAt(0).toUpperCase();
+            
+            tile.innerHTML = `
+                <div class="profile-pic">${initial}</div>
+                <div class="username">@${username}</div>
+                <svg class="instagram-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+            `;
+            
+            gallery.appendChild(tile);
+        });
+    </script>
+</body>
+</html>
